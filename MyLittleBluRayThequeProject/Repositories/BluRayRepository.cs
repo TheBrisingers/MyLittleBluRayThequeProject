@@ -45,7 +45,7 @@ namespace MyLittleBluRayThequeProject.Repositories
                     {
                         new Personne
                         {
-                            Id = 0,
+                            Id = 1,
                             Nom = "Per",
                             Prenom = "Sonne",
                             Nationalite = "Fr",

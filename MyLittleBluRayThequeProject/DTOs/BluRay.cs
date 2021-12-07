@@ -58,11 +58,16 @@
         /// <summary>
         /// Liste des genres associés au BR
         /// </summary>
-        public List <string> Genre { get; set; }
+        public List<string> Genre { get; set; }
     
         /// <summary>
         /// Résumé du BR
         /// </summary>
         public string Resume { get; set; }
+
+        /// <summary>
+        /// Note du BR
+        /// </summary>
+        public int Note { get; set; }
     }
 }

@@ -24,4 +24,8 @@ app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=AllBluRay}/{id?}");
 
+app.MapControllerRoute(
+    name : "BluRayDisplay",
+    pattern: "{controller=Home}/{action=SelectedBluRay}/{id?}");
+    
 app.Run();
