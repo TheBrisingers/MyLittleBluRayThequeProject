@@ -33,7 +33,8 @@ namespace MyLittleBluRayThequeProject.Repositories
                             DateNaissance = DateTime.Now,
                             Professions = new List<string>{"Acteur"}
                         }
-                    }
+                    },
+                    Genre = new List<string>{"Romantique", "Timotheecestungenredefilm", "Manonaussi"} 
                 },
                 new BluRay
                 {

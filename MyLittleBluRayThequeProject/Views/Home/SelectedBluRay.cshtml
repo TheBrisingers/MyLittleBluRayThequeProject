@@ -8,17 +8,19 @@
 }
 <div class="text-center">
     <div>
-    titre : @Model.SelectedBluRay.Titre
+        <h1>@Model.SelectedBluRay.Titre</h1>
+    </div>
+    <body >
+          <font color = "grey">@Model.SelectedBluRay.Duree / @string.Join(", ", Model.SelectedBluRay.Genre)</font>
+    </body>
+    <div>
+        <font color = "grey">Avec : @string.Join(", ", Model.SelectedBluRay.Acteurs.Select(x => string.Concat(x.Prenom, " ", x.Nom)))</font>
     </div>
     <div>
-        Acteurs : @foreach (var act in Model.SelectedBluRay.Acteurs)
-        {
-            <div>nom :  @act.Nom</div>
-            <div>prenom :  @act.Prenom</div>
-        }
+        Date de sortie : @Model.SelectedBluRay.DateSortie.ToShortDateString()
     </div>
-    <div>
-    Date de sortie : @Model.SelectedBluRay.DateSortie.ToShortDateString()
+    <div class="w3-panel w3-sand">
+        <p>@Model.SelectedBluRay.Resume</p>
     </div>
 
 </div> 

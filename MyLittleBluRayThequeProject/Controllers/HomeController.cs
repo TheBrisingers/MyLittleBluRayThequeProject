@@ -17,7 +17,7 @@ namespace MyLittleBluRayThequeProject.Controllers
             brRepository = new BluRayRepository();
         }
 
-        public IActionResult Index()
+        public IActionResult AllBluRay()
         {
             IndexViewModel model = new IndexViewModel();
             model.BluRays = brRepository.GetListeBluRay();
