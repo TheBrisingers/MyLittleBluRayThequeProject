@@ -1,0 +1,46 @@
+﻿@model IndexViewModel
+
+@{
+    ViewData["Title"] = "InsertBluRay";
+}
+
+<div>
+    <form action="" method="">
+        <div>
+            <label for="titre">Entrer le titre du BR :</label>
+            <input type="text" name="titre" id="titre"  required />
+        </div>
+        <div>
+            <label for="acteurs">Entrer les prénoms et noms des acteurs séparé par une virgule :</label>
+            <input type="text" name="acteurs" id="acteurs" placeholder="Prénom1 NOM1, Prénom2 NOM2 ..." required />
+        </div>
+        <div>
+            <label for="realisateur">Entrer le réalisateur :</label>
+            <input type="text" name="realisateur" id="realisateur"  placeholder="Prénom NOM" required />
+        </div>
+        <div>
+            <label for="auteur">Entrer l'auteur :</label>
+            <input type="text" name="auteur" id="auteur" placeholder="Prénom NOM" required />
+        </div>
+        <div>
+            <label for="duree">Entrer la durée :</label>
+            <input type="time" name="duree" id="duree" required />
+        </div>
+        <div>
+            <label for="datesortie">Entrer la date de dortie :</label>
+            <input type="date" name="datesortie" id="datesortie" required />
+        </div>
+        <div>
+            <label for="resume">Entrer le resumé :</label>
+            <input type="text" name="resume" id="resume"/>
+        </div>
+        <div>
+            <label for="note">Entrer la note :</label>
+            <input type="number" name="note" id="note" min="0" max="5" step="0.5"/>
+        </div>
+        <div>
+            <input type="submit" value="Ajouter !"
+        </div>
+    </form>
+</div>
+
