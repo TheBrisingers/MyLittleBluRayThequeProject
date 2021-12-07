@@ -1,5 +1,7 @@
 ﻿@model IndexViewModel
 
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
 @{
     ViewData["Title"] = "Home Page";
 }
@@ -10,11 +12,11 @@
 
 @foreach (var br in Model?.BluRays)
 {
-    <div>
-    <a asp-area="" asp-controller="Home" asp-action="AllBluRay" asp-route-id="@br.Id"> 
+<div>
+    <a asp-area="" asp-controller="Home" asp-action="AllBluRay" asp-route-id="@br.Id">
         @br.Titre (@br.DateSortie.ToShortDateString()) @br.Note/5
-        </a>
-    </div>
+    </a>
+</div>
 }
 @if(Model.SelectedBluRay != null)
 {
@@ -22,11 +24,11 @@
     <div>
         <h1>@Model.SelectedBluRay.Titre</h1>
     </div>
-    <body >
-          <font color = "grey">@Model.SelectedBluRay.Duree / @string.Join(", ", Model.SelectedBluRay.Genre)</font>
+    <body>
+        <font color="grey">@Model.SelectedBluRay.Duree / @string.Join(", ", Model.SelectedBluRay.Genre)</font>
     </body>
     <div>
-        <font color = "grey">Avec : @string.Join(", ", Model.SelectedBluRay.Acteurs.Select(x => string.Concat(x.Prenom, " ", x.Nom)))</font>
+        <font color="grey">Avec : @string.Join(", ", Model.SelectedBluRay.Acteurs.Select(x => string.Concat(x.Prenom, " ", x.Nom)))</font>
     </div>
     <div>
         Date de sortie : @Model.SelectedBluRay.DateSortie.ToShortDateString()

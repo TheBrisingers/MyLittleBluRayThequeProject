@@ -34,7 +34,12 @@ namespace MyLittleBluRayThequeProject.Repositories
                             Professions = new List<string>{"Acteur"}
                         }
                     },
-                    Genre = new List<string>{"Romantique", "Timotheecestungenredefilm", "Manonaussi"} 
+                    Genre = new List<string>
+                    {
+                        "Romantique", "Timotheecestungenredefilm", "etmoi"
+                    },
+                    Resume = "Ultima Syriarum est Palaestina per intervalla magna protenta, cultis abundans terris et nitidis et civitates habens quasdam egregias, nullam nulli cedentem sed sibi vicissim velut ad perpendiculum aemulas: Caesaream, quam ad honorem Octaviani principis exaedificavit Herodes, et Eleutheropolim et Neapolim itidemque Ascalonem Gazam aevo superiore exstructas.",
+                    Note = 4
                 },
                 new BluRay
                 {
@@ -53,7 +58,13 @@ namespace MyLittleBluRayThequeProject.Repositories
                             DateNaissance = DateTime.Now,
                             Professions = new List<string>{"Acteur"}
                         }
-                    }
+                    },
+                    Genre = new List<string>
+                    {
+                        "Romantique", "Manonaussi"
+                    },
+                    Resume = "Ultima Syriarum est Palaestina per intervalla magna protenta, cultis abundans terris et nitidis et civitates habens quasdam egregias, nullam nulli cedentem sed sibi vicissim velut ad perpendiculum aemulas: Caesaream, quam ad honorem Octaviani principis exaedificavit Herodes, et Eleutheropolim et Neapolim itidemque Ascalonem Gazam aevo superiore exstructas.",
+                    Note = 2
                 }
             };
         }
