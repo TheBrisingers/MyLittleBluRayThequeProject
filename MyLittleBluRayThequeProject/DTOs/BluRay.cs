@@ -54,5 +54,15 @@
         /// Version du film sur le BR
         /// </summary>
         public string Version { get; set; }
+        
+        /// <summary>
+        /// Liste des genres associés au BR
+        /// </summary>
+        public List <string> Genre { get; set; }
+    
+        /// <summary>
+        /// Résumé du BR
+        /// </summary>
+        public string Resume { get; set; }
     }
 }
