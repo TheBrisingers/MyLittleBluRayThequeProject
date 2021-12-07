@@ -3,13 +3,36 @@
 @{
     ViewData["Title"] = "Home Page";
 }
+
+<div>
+    <h1>Voici les Blu-rays disponible :</h1>
+</div>
+
 @foreach (var br in Model?.BluRays)
 {
     <div>
-    <a asp-area="" asp-controller="Home" asp-action="SelectedBluRay" asp-route-id="@br.Id"> Titre : @br.Titre</a>
+    <a asp-area="" asp-controller="Home" asp-action="AllBluRay" asp-route-id="@br.Id"> 
+        @br.Titre (@br.DateSortie.ToShortDateString()) @br.Note/5
+        </a>
     </div>
 }
+@if(Model.SelectedBluRay != null)
+{
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+    <div>
+    titre : @Model.SelectedBluRay.Titre
+    </div>
+    <div>
+        Acteurs : @foreach (var act in Model.SelectedBluRay.Acteurs)
+        {
+            <div>nom :  @act.Nom</div>
+            <div>prenom :  @act.Prenom</div>
+        }
+    </div>
+    <div>
+    Date de sortie : @Model.SelectedBluRay.DateSortie.ToShortDateString()
+    </div>
+
+</div> 
+}
+
