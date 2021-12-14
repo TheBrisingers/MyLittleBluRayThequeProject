@@ -20,8 +20,9 @@ namespace MyLittleBluRayThequeProject.Repositories
             try
             {
                 // Connect to a PostgreSQL database
-                conn = new NpgsqlConnection("Server=127.0.0.1;User Id=postgres;Password=matim;Database=postgres;");
+                conn = new NpgsqlConnection("Server=127.0.0.1;User Id=postgres;Password=psw;Database=postgres;");
                 conn.Open();
+
                 // Define a query returning a single row result set
                 NpgsqlCommand command = new NpgsqlCommand("SELECT \"Id\", \"Titre\", \"Duree\", \"Version\" FROM \"BluRayTheque\".\"BluRay\"", conn);
 
@@ -29,59 +30,6 @@ namespace MyLittleBluRayThequeProject.Repositories
                 NpgsqlDataReader dr = command.ExecuteReader();
 
                 // Output rows
-                /*while (dr.Read())x
-                    result.Add(new BluRay
-                    {
-                        Id = long.Parse(dr[0].ToString()),
-                        Titre = dr[1].ToString(),
-                        Scenariste = (new Personne
-                        {
-                            Id = long.Parse(dr[2].ToString()),
-                            Nom = dr[2].ToString(),
-                            Prenom = dr[2].ToString(),
-                            *//*DateNaissance = long.Parse(dr[2].ToString()),
-                            Nationalite = long.Parse(dr[2].ToString()),
-                            Professions = long.Parse(dr[2].ToString()),*//*
-                        }),
-                        Realisateur = (new Personne
-                        {
-                            Id = long.Parse(dr[2].ToString()),
-                            Nom = dr[2].ToString(),
-                            Prenom = dr[2].ToString(),
-                            *//*DateNaissance = long.Parse(dr[2].ToString()),
-                            Nationalite = long.Parse(dr[2].ToString()),
-                            Professions = long.Parse(dr[2].ToString()),*//*
-                        }),
-                        //Faire une boucle for
-                        Acteurs = {(new Personne
-                        {
-                            Id = long.Parse(dr[2].ToString()),
-                            Nom = dr[2].ToString(),
-                            Prenom = dr[2].ToString(),
-                            DateNaissance = DateTime.Parse(dr[2].ToString()),
-                            Nationalite = dr[2].ToString(),
-                            Professions = null
-                        }), (new Personne
-                        {
-                            Id = long.Parse(dr[2].ToString()),
-                            Nom = dr[2].ToString(),
-                            Prenom = dr[2].ToString(),
-                            DateNaissance = DateTime.Parse(dr[2].ToString()),
-                            Nationalite = dr[2].ToString(),
-                            Professions = null
-                        })},
-                        Duree = TimeSpan.FromSeconds(long.Parse(dr[2].ToString())),
-                        DateSortie = DateTime.Parse(dr[4].ToString()),
-                        *//*Langues = "ghb",
-                        SsTitres = ,
-                        Version = dr[3].ToString(),
-                        Genre = dr[3].ToString(),
-                        Resume = dr[3].ToString(),
-                        Note = dr[3].ToString(),
-                        Emprunt = dr[3].ToString(),
-                        Proprietaire = dr[3].ToString(),
-                        Disponible = dr[3].ToString(),*//*
-                    });*/
                 while (dr.Read())
                     result.Add(new BluRay
                     {
@@ -90,6 +38,7 @@ namespace MyLittleBluRayThequeProject.Repositories
                         Duree = TimeSpan.FromSeconds(long.Parse(dr[2].ToString())),
                         Version = dr[3].ToString()
                     });
+
             }
             finally
             {
@@ -114,7 +63,7 @@ namespace MyLittleBluRayThequeProject.Repositories
             {
                 List<BluRay> qryResult = new List<BluRay>();
                 // Connect to a PostgreSQL database
-                conn = new NpgsqlConnection("Server=127.0.0.1;User Id=postgres;Password=matim;Database=postgres;");
+                conn = new NpgsqlConnection("Server=127.0.0.1;User Id=postgres;Password=psw;Database=postgres;");
                 conn.Open();
 
                 // Define a query returning a single row result set
