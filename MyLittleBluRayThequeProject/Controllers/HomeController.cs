@@ -46,10 +46,10 @@ namespace MyLittleBluRayThequeProject.Controllers
             return View(model);
         }
 
-        [HttpPut]
-        public IActionResult EditBluRay(DTOs.BluRay bluRay)
+        [HttpPost]
+        public IActionResult EditBluRay(Models.BluRayInsertViewModel bluRayInsertViewModel)
         {
-            brRepository.AddBluRay(bluRay);
+            brRepository.AddBluRay(BluRayInsertViewModel.ToDTO(bluRayInsertViewModel));
 
             IndexViewModel model = new IndexViewModel();
             model.BluRays = brRepository.GetListeBluRay();

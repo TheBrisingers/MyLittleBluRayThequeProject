@@ -5,14 +5,14 @@
 }
 
 <div>
-    <form asp-controller="Home" asp-action="EditBluRay" method="">
+    <form asp-controller="Home" asp-action="EditBluRay" method="post">
         <div>
             <label for="titre">Entrer le titre du BR :</label>
             <input type="text" name="Titre" id="titre"  required />
         </div>
         <div>
             <label for="scenariste">Scenariste :</label>
-            <select name="Scenariste" id="scenariste" required>
+            <select name="IdScenariste" id="scenariste" required>
                 <libellé>support actuel de vos images</libellé>
                 @foreach(var personne in Model?.Personnes)
                 {
@@ -22,7 +22,7 @@
         </div>
         <div>
             <label for="realisateur">Réalisateur :</label>
-            <select name="Realisateur" id="realisateur" required>
+            <select name="IdRealisateur" id="realisateur" required>
                 <libellé>support actuel de vos images</libellé>
                 @foreach(var personne in Model?.Personnes)
                 {
@@ -32,8 +32,7 @@
         </div>
         <div>
             <label for="acteurs">Acteurs :</label>
-            <input type="text" name="Acteurs" id="acteurs" placeholder="Prénom1 NOM1, Prénom2 NOM2 ..." required />
-            <select name="Acteurs" id="acteurs" required multiple>
+            <select name="IdActeurs" id="acteurs" required multiple>
                 <libellé>support actuel de vos images</libellé>
                 @foreach(var personne in Model?.Personnes)
                 {
@@ -43,7 +42,7 @@
         </div>
         <div>
             <label for="duree">Durée en minutes:</label>
-            <input type="time" name="Duree" id="duree" required />
+            <input type="time" name="Duree" id="duree" min="0" required />
         </div>
         <div>
             <label for="datesortie">Date de dortie :</label>
