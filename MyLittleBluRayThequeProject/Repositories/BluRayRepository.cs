@@ -20,11 +20,11 @@ namespace MyLittleBluRayThequeProject.Repositories
             try
             {
                 // Connect to a PostgreSQL database
-                conn = new NpgsqlConnection("Server=127.0.0.1;User Id=postgres;Password=psw;Database=postgres;");
+                conn = new NpgsqlConnection("Server=127.0.0.1;User Id=postgres;Password=matim;Database=postgres;");
                 conn.Open();
 
                 // Define a query returning a single row result set
-                NpgsqlCommand command = new NpgsqlCommand("SELECT \"Id\", \"Titre\", \"Duree\", \"Version\" FROM \"BluRayTheque\".\"BluRay\"", conn);
+                NpgsqlCommand command = new NpgsqlCommand("SELECT \"Id\", \"Titre\", \"Duree\", \"Version\", \"DateSortie\" FROM \"BluRayTheque\".\"BluRay\"", conn);
 
                 // Execute the query and obtain a result set
                 NpgsqlDataReader dr = command.ExecuteReader();
@@ -36,7 +36,9 @@ namespace MyLittleBluRayThequeProject.Repositories
                         Id = long.Parse(dr[0].ToString()),
                         Titre = dr[1].ToString(),
                         Duree = TimeSpan.FromSeconds(long.Parse(dr[2].ToString())),
-                        Version = dr[3].ToString()
+                        Version = dr[3].ToString(),
+                        DateSortie = DateTime.Parse(dr[4].ToString())
+
                     });
 
             }
@@ -63,7 +65,7 @@ namespace MyLittleBluRayThequeProject.Repositories
             {
                 List<BluRay> qryResult = new List<BluRay>();
                 // Connect to a PostgreSQL database
-                conn = new NpgsqlConnection("Server=127.0.0.1;User Id=postgres;Password=psw;Database=postgres;");
+                conn = new NpgsqlConnection("Server=127.0.0.1;User Id=postgres;Password=matim;Database=postgres;");
                 conn.Open();
 
                 // Define a query returning a single row result set
@@ -95,6 +97,45 @@ namespace MyLittleBluRayThequeProject.Repositories
             }
             return result;
         }
+
+        /// <summary>
+        /// Ajout d'un BR dans la base de données
+        /// </summary>
+        /// <param name="Id">l'Id du bluRay</param>
+        /// <returns></returns>
+        public void AddBluRay(BluRay bluRay)
+        {
+            NpgsqlConnection conn = null;
+            try
+            {
+                // Connect to a PostgreSQL database
+                conn = new NpgsqlConnection("Server=127.0.0.1;User Id=postgres;Password=matim;Database=postgres;");
+                conn.Open();
+
+                // Define a query returning a single row result set
+                NpgsqlCommand command = new NpgsqlCommand("INSERT INTO \"BluRayTheque\".\"BluRay\"(\"Titre\", \"Duree\", \"DateSortie\", \"Version\", \"Emprunt\"," +
+                    "\"Disponible\") VALUES ('@titre', @duree, @dateSortie, @version, @emprunt, , @disponible);", conn);
+                command.Parameters.AddWithValue("titre", bluRay.Titre);
+                command.Parameters.AddWithValue("duree", bluRay.Duree);
+                command.Parameters.AddWithValue("dateSortie", bluRay.DateSortie);
+                command.Parameters.AddWithValue("version", bluRay.Version);
+                //command.Parameters.AddWithValue("emprunt", bluRay.E);
+                command.Parameters.AddWithValue("disponible", bluRay.Titre);
+
+                // Execute the query and obtain a result set
+                NpgsqlDataReader dr = command.ExecuteReader();
+
+            }
+            finally
+            {
+                if (conn != null)
+                {
+                    conn.Close();
+                }
+            }
+        }
+
+        
     }
 }
     

@@ -10,11 +10,15 @@ namespace MyLittleBluRayThequeProject.Controllers
         private readonly ILogger<HomeController> _logger;
 
         private readonly BluRayRepository brRepository;
+        private readonly PersonneRepository persRepository;
+
 
         public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
             brRepository = new BluRayRepository();
+            persRepository = new PersonneRepository();
+
         }
 
         /*public IActionResult AllBluRay()
@@ -35,14 +39,28 @@ namespace MyLittleBluRayThequeProject.Controllers
             return View(model);
         }
 
+        public IActionResult InsertBluRay()
+        {
+            IndexViewModel model = new IndexViewModel();
+            model.Personnes = persRepository.GetListePersonne();
+            return View(model);
+        }
+
+        [HttpPut]
+        public IActionResult EditBluRay(DTOs.BluRay bluRay)
+        {
+            brRepository.AddBluRay(bluRay);
+
+            IndexViewModel model = new IndexViewModel();
+            model.BluRays = brRepository.GetListeBluRay();
+            return View("AllBluRay", model);
+        }
+
         public IActionResult Privacy()
         {
             return View();
         }
-        public IActionResult InsertBluRay()
-        {
-            return View();
-        }
+        
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

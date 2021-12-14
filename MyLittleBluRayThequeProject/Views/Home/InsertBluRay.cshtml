@@ -5,38 +5,81 @@
 }
 
 <div>
-    <form action="" method="">
+    <form asp-controller="Home" asp-action="EditBluRay" method="">
         <div>
             <label for="titre">Entrer le titre du BR :</label>
-            <input type="text" name="titre" id="titre"  required />
+            <input type="text" name="Titre" id="titre"  required />
         </div>
         <div>
-            <label for="acteurs">Entrer les prénoms et noms des acteurs séparé par une virgule :</label>
-            <input type="text" name="acteurs" id="acteurs" placeholder="Prénom1 NOM1, Prénom2 NOM2 ..." required />
+            <label for="scenariste">Scenariste :</label>
+            <select name="Scenariste" id="scenariste" required>
+                <libellé>support actuel de vos images</libellé>
+                @foreach(var personne in Model?.Personnes)
+                {
+                    <option asp-controller="Home" asp-action="AllPersonnes" valeur=@personne.Id>@personne.Nom @personne.Prenom</option>                    
+                }
+            </select>
         </div>
         <div>
-            <label for="realisateur">Entrer le réalisateur :</label>
-            <input type="text" name="realisateur" id="realisateur"  placeholder="Prénom NOM" required />
+            <label for="realisateur">Réalisateur :</label>
+            <select name="Realisateur" id="realisateur" required>
+                <libellé>support actuel de vos images</libellé>
+                @foreach(var personne in Model?.Personnes)
+                {
+                    <option asp-controller="Home" asp-action="AllPersonnes" valeur=@personne.Id>@personne.Nom @personne.Prenom</option>                    
+                }
+            </select>
         </div>
         <div>
-            <label for="auteur">Entrer l'auteur :</label>
-            <input type="text" name="auteur" id="auteur" placeholder="Prénom NOM" required />
+            <label for="acteurs">Acteurs :</label>
+            <input type="text" name="Acteurs" id="acteurs" placeholder="Prénom1 NOM1, Prénom2 NOM2 ..." required />
+            <select name="Acteurs" id="acteurs" required multiple>
+                <libellé>support actuel de vos images</libellé>
+                @foreach(var personne in Model?.Personnes)
+                {
+                    <option asp-controller="Home" asp-action="AllPersonnes" valeur=@personne.Id>@personne.Nom @personne.Prenom</option>                    
+                }
+            </select>
         </div>
         <div>
-            <label for="duree">Entrer la durée :</label>
-            <input type="time" name="duree" id="duree" required />
+            <label for="duree">Durée en minutes:</label>
+            <input type="time" name="Duree" id="duree" required />
         </div>
         <div>
-            <label for="datesortie">Entrer la date de dortie :</label>
-            <input type="date" name="datesortie" id="datesortie" required />
+            <label for="datesortie">Date de dortie :</label>
+            <input type="date" name="DateSortie" id="datesortie" required />
         </div>
         <div>
-            <label for="resume">Entrer le resumé :</label>
-            <input type="text" name="resume" id="resume"/>
+            <label for="langue">Langue disponible :</label>
+            <input type="text" name="Langue" id="resume"/>
         </div>
         <div>
-            <label for="note">Entrer la note :</label>
+            <label for="ssTitres">Langue sous-titre disponible :</label>
+            <input type="text" name="SsTitres" id="ssTitres"/>
+        </div>
+        <div>
+            <label for="version">Version :</label>
+            <input type="text" name="Version" id="version"/>
+        </div>
+        <div>
+            <label for="genre">Genre(s) :</label>
+            <input type="text" name="Genre" id="genre"/>
+        </div>
+        <div>
+            <label for="resume">Resumé :</label>
+            <input type="text" name="Resume" id="resume"/>
+        </div>
+        <div>
+            <label for="note">Note :</label>
             <input type="number" name="note" id="note" min="0" max="5" step="0.5"/>
+        </div>
+        <div>
+            <label for="emprunt">Est emprunté :</label>
+            <input type="checkbox" name="Emprunt" id="emprunt" checked/>
+        </div>
+        <div>
+            <label for="disponible">Disponibilité :</label>
+            <input type="checkbox" name="Disponible" id="disponible" checked/>
         </div>
         <div>
             <input type="submit" value="Ajouter !"
