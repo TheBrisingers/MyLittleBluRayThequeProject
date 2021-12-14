@@ -56,9 +56,9 @@
         public string Version { get; set; }
         
         /// <summary>
-        /// Liste des genres associés au BR
+        /// Genre associé au BR
         /// </summary>
-        public List<string> Genre { get; set; }
+        public string Genre { get; set; }
     
         /// <summary>
         /// Résumé du BR
@@ -69,5 +69,15 @@
         /// Note du BR
         /// </summary>
         public int Note { get; set; }
+
+        /// <summary>
+        /// BR emprunté ou non
+        /// </summary>
+        public bool Emprunt { get; set; }
+
+        /// <summary>
+        /// Disponibilité du BR
+        /// </summary>
+        public bool Disponible { get; set; }
     }
 }
