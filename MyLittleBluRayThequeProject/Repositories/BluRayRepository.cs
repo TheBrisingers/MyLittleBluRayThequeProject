@@ -178,35 +178,6 @@ namespace MyLittleBluRayThequeProject.Repositories
                 // Execute the query and obtain a result set
                 NpgsqlDataReader dr = command.ExecuteReader();
 
-                /*if (bluRay.Acteurs != null)
-                {
-                    foreach (var acteur in bluRay.Acteurs)
-                    {
-                        command = new NpgsqlCommand("INSERT INTO \"BluRayTheque\".\"Acteur\"(\"IdBluRay\", \"IdActeur\") VALUES (@idBluRay, @idActeur);", conn);
-                        command.Parameters.AddWithValue("idBluRay", acteur.Id);//TODO change with id bluRay
-                        command.Parameters.AddWithValue("idActeur", acteur.Id);
-                        command.ExecuteNonQuery();
-                    }
-                }
-
-                if (bluRay.Scenariste != null)
-                {
-                    NpgsqlCommand command2 = new NpgsqlCommand("INSERT INTO \"BluRayTheque\".\"Scenariste\"(\"IdBluRay\", \"IdScenariste\") VALUES (@idBluRay, @idScenariste);", conn);
-                    command2.Parameters.AddWithValue("idBluRay", bluRay.Scenariste.Id);//TODO change with id bluRay
-                    command2.Parameters.AddWithValue("idScenariste", bluRay.Scenariste.Id);
-                    command2.ExecuteNonQuery();
-                    
-                }
-
-                if (bluRay.Realisateur != null)
-                {
-                    NpgsqlCommand command3 = new NpgsqlCommand("INSERT INTO \"BluRayTheque\".\"Realisateur\"(\"IdBluRay\", \"IdRealisateur\") VALUES (@idBluRay, @idRealisateur);", conn);
-                    command3.Parameters.AddWithValue("idBluRay", bluRay.Realisateur.Id);//TODO change with id bluRay
-                    command3.Parameters.AddWithValue("idRealisateur", bluRay.Realisateur.Id);
-                    command3.ExecuteNonQuery();
-
-                }
-                */
 
             }
             finally

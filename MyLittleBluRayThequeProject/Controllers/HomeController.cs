@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MyLittleBluRayThequeProject.Models;
 using MyLittleBluRayThequeProject.Repositories;
+using MyLittleBluRayThequeProject.Business;
 using System.Diagnostics;
 
 namespace MyLittleBluRayThequeProject.Controllers
@@ -11,13 +12,17 @@ namespace MyLittleBluRayThequeProject.Controllers
 
         private readonly BluRayRepository brRepository;
         private readonly PersonneRepository persRepository;
+        private readonly LangueRepository langRepository;
+        private readonly BluRayBusiness bluRayBusiness;
 
 
         public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
             brRepository = new BluRayRepository();
+            bluRayBusiness = new BluRayBusiness();
             persRepository = new PersonneRepository();
+            langRepository = new LangueRepository();
 
         }
 
@@ -43,14 +48,14 @@ namespace MyLittleBluRayThequeProject.Controllers
         {
             IndexViewModel model = new IndexViewModel();
             model.Personnes = persRepository.GetListePersonne();
-            model.Langues = persRepository.GetListeLangues();
+            model.Langues = langRepository.GetListeLangues();
             return View(model);
         }
 
         [HttpPost]
         public IActionResult EditBluRay(Models.BluRayInsertViewModel bluRayInsertViewModel)
         {
-            brRepository.AddBluRay(BluRayInsertViewModel.ToDTO(bluRayInsertViewModel));
+            bluRayBusiness.AddBluRay(BluRayInsertViewModel.ToDTO(bluRayInsertViewModel));
 
             IndexViewModel model = new IndexViewModel();
             model.BluRays = brRepository.GetListeBluRay();
