@@ -15,7 +15,7 @@
             <select name="IdScenariste" id="scenariste" required>
                 @foreach(var personne in Model?.Personnes)
                 {
-                    <option valeur=@personne.Id>@personne.Nom @personne.Prenom</option>                    
+                    <option value="@personne.Id">@personne.Nom @personne.Prenom</option>                    
                 }
             </select>
         </div>
@@ -24,7 +24,7 @@
             <select name="IdRealisateur" id="realisateur" required>
                 @foreach(var personne in Model?.Personnes)
                 {
-                    <option valeur=@personne.Id>@personne.Nom @personne.Prenom</option>                    
+                    <option value="@personne.Id">@personne.Nom @personne.Prenom</option>                    
                 }
             </select>
         </div>
@@ -33,7 +33,7 @@
             <select name="IdActeurs" id="acteurs" required multiple>
                 @foreach(var personne in Model?.Personnes)
                 {
-                    <option valeur=@personne.Id>@personne.Nom @personne.Prenom</option>                    
+                    <option value="@personne.Id">@personne.Nom @personne.Prenom</option>                    
                 }
             </select>
         </div>
@@ -50,7 +50,7 @@
             <select name="IdLangues" id="langue" required multiple>            
                 @foreach(var langue in Model?.Langues)
                 {
-                    <option valeur=@langue.Id>@langue.Langue</option>                    
+                    <option value=@langue.Id>@langue.Langue</option>                    
                 }
             </select>
         </div>
@@ -59,7 +59,7 @@
             <select name="IdSsTitres" id="ssTitres" required multiple>            
                 @foreach(var langue in Model?.Langues)
                 {
-                    <option valeur=@langue.Id>@langue.Langue</option>                    
+                    <option value=@langue.Id>@langue.Langue</option>                    
                 }
             </select>
         </div>
