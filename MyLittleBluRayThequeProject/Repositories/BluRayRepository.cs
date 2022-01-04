@@ -165,23 +165,15 @@ namespace MyLittleBluRayThequeProject.Repositories
                 conn.Open();
 
                 // Define a query returning a single row result set
-                NpgsqlCommand command = new NpgsqlCommand("INSERT INTO BluRay(\"Titre\", \"Scenariste\",\"Realisateur\",\"Acteurs\", \"Duree\", \"DateSortie\", \"Langues\"," +
-                    "\"Sous-titres\", \"Version\", \"Genre\", \"Resume\", \"Note\", \"Emprunt\", \"Disponible\") " +
-                    "VALUES ('@titre', @scenarite, @realisateur, @acteurs, @duree, @dateSortie, @langues, @ssTitre, @version, @genre, @resume, @note, @emprunt, @disponible);", conn);
+                NpgsqlCommand command = new NpgsqlCommand("INSERT INTO \"BluRayTheque\".\"BluRay\"(\"Titre\", \"Duree\", \"DateSortie\"," +
+                    "\"Version\", \"Emprunt\", \"Disponible\") " +
+                    "VALUES (@titre, @duree, @dateSortie, @version, @emprunt, @disponible);", conn);
                 command.Parameters.AddWithValue("titre", bluRay.Titre);
-                command.Parameters.AddWithValue("scenarite", bluRay.Scenariste);
-                command.Parameters.AddWithValue("realisateur", bluRay.Realisateur);
-                command.Parameters.AddWithValue("acteurs", bluRay.Acteurs);
                 command.Parameters.AddWithValue("duree", bluRay.Duree.TotalSeconds);
                 command.Parameters.AddWithValue("dateSortie", bluRay.DateSortie);
-                command.Parameters.AddWithValue("langues", bluRay.Langues);
-                command.Parameters.AddWithValue("ssTitre", bluRay.SsTitres);
                 command.Parameters.AddWithValue("version", bluRay.Version);
-                command.Parameters.AddWithValue("genre", bluRay.Genre);
-                command.Parameters.AddWithValue("resume", bluRay.Resume);
-                command.Parameters.AddWithValue("note", bluRay.Note);
                 command.Parameters.AddWithValue("emprunt", bluRay.Emprunt);
-                command.Parameters.AddWithValue("disponible", bluRay.Titre);
+                command.Parameters.AddWithValue("disponible", bluRay.Disponible);
 
                 // Execute the query and obtain a result set
                 NpgsqlDataReader dr = command.ExecuteReader();
