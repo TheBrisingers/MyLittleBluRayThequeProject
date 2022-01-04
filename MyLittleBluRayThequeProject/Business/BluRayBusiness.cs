@@ -53,7 +53,7 @@ namespace MyLittleBluRayThequeProject.Business
                 throw new Exception();
             }
 
-            //personneRepository.LinkRealisateur(bluRay.Realisateur, idBluRay);
+            personneRepository.LinkRealisateur(bluRay.Realisateur, idBluRay);
             personneRepository.LinkScenariste(bluRay.Scenariste, idBluRay);
             personneRepository.LinkActeur(bluRay.Acteurs, idBluRay);
             langueRepository.LinkLangue(bluRay.Langues, idBluRay);
