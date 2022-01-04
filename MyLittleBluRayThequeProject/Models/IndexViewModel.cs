@@ -9,5 +9,7 @@ namespace MyLittleBluRayThequeProject.Models
         public BluRay SelectedBluRay { get; set; }
 
         public List<Personne> Personnes { get; set; }
+
+        public List<RefLangue> Langues { get; set; }
     }
 }

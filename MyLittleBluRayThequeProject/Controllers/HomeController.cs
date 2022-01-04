@@ -43,6 +43,7 @@ namespace MyLittleBluRayThequeProject.Controllers
         {
             IndexViewModel model = new IndexViewModel();
             model.Personnes = persRepository.GetListePersonne();
+            model.Langues = persRepository.GetListeLangues();
             return View(model);
         }
 

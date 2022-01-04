@@ -42,32 +42,17 @@ namespace MyLittleBluRayThequeProject.Models
         /// <summary>
         /// Langues disponibles sur le BR
         /// </summary>
-        public List<string> Langues { get; set; }
+        public List<int> IdLangues { get; set; }
 
         /// <summary>
         /// Sous-titres disponible sur le BR
         /// </summary>
-        public List<string> SsTitres { get; set; }
+        public List<int> IdSsTitres { get; set; }
 
         /// <summary>
         /// Version du film sur le BR
         /// </summary>
         public string Version { get; set; }
-
-        /// <summary>
-        /// Genre associé au BR
-        /// </summary>
-        public string Genre { get; set; }
-
-        /// <summary>
-        /// Résumé du BR
-        /// </summary>
-        public string Resume { get; set; }
-
-        /// <summary>
-        /// Note du BR
-        /// </summary>
-        public int Note { get; set; }
 
         /// <summary>
         /// BR emprunté ou non
@@ -102,11 +87,8 @@ namespace MyLittleBluRayThequeProject.Models
                 Disponible = bluRayInsertViewModel.Disponible,
                 Duree = bluRayInsertViewModel.Duree,
                 Emprunt = bluRayInsertViewModel.Emprunt,
-                Genre = bluRayInsertViewModel.Genre,
-                Langues = bluRayInsertViewModel.Langues,
-                Note = bluRayInsertViewModel.Note,
-                Resume = bluRayInsertViewModel.Resume,
-                SsTitres = bluRayInsertViewModel.SsTitres,
+                Langues = new List<RefLangue>(),
+                SsTitres = new List<RefLangue>(),
                 Titre = bluRayInsertViewModel.Titre,
                 Version = bluRayInsertViewModel.Version
 
@@ -114,6 +96,14 @@ namespace MyLittleBluRayThequeProject.Models
             foreach (var idAct in bluRayInsertViewModel.IdActeurs)
             {
                 bluray.Acteurs.Add(new Personne { Id = idAct });
+            }
+            foreach (var idLangue in bluRayInsertViewModel.IdLangues)
+            {
+                bluray.Langues.Add(new RefLangue { Id = idLangue });
+            }
+            foreach (var idLangue in bluRayInsertViewModel.IdSsTitres)
+            {
+                bluray.SsTitres.Add(new RefLangue { Id = idLangue });
             }
             return bluray;
         }
