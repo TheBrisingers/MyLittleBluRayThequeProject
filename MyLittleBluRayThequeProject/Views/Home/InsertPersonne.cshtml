@@ -1,11 +1,11 @@
 ﻿@model IndexViewModel
 
 @{
-    ViewData["Title"] = "InsertPersonne";
+    ViewData["Title"] = "InsertBluRay";
 }
 
 <div>
-    <form action="" method="">
+    <form asp-controller="Home" asp-action="EditPersonne" method="post">
         <div>
             <label for="Nom">Nom :</label>
             <input type="text" name="Nom" id="nom" placeholder="JOUFFRIEAU" required />

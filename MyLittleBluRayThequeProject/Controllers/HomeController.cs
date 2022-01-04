@@ -60,9 +60,22 @@ namespace MyLittleBluRayThequeProject.Controllers
         {
             return View();
         }
+
         public IActionResult InsertPersonne()
         {
-            return View();
+            IndexViewModel model = new IndexViewModel();
+            return View(model);
+        }
+
+        [HttpPost]
+        public IActionResult EditPersonne(Models.PersonneInsertViewModel personneInsertViewModel)
+        {
+            persRepository.AddPersonne(PersonneInsertViewModel.ToDTO(personneInsertViewModel));
+
+            IndexViewModel model = new IndexViewModel();
+            model.Personnes = persRepository.GetListePersonne();
+            model.BluRays = brRepository.GetListeBluRay();
+            return View("AllBluRay", model);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

@@ -26,10 +26,5 @@
         /// Nationalité de la personne
         /// </summary>
         public string Nationalite { get; set; }
-
-        /// <summary>
-        /// Professions de la personne
-        /// </summary>
-        public List<string> Professions { get; set; }
     }
 }
