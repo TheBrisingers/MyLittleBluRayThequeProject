@@ -30,6 +30,7 @@ namespace MyLittleBluRayThequeProject.Controllers
         [HttpPost("{IdBluray}/Emprunt")]
         public ObjectResult EmprunterBluRay([FromRoute] IdBluRayRoute route)
         {
+
             return new CreatedResult($"{route.IdBluray}", null);
         }
     }

@@ -216,9 +216,7 @@ namespace MyLittleBluRayThequeProject.Repositories
                     conn.Close();
                 }
             }
-        }
-
-        
+        }        
     }
 }
     

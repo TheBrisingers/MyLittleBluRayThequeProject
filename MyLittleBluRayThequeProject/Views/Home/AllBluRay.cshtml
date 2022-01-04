@@ -25,15 +25,33 @@
         <h1>@Model.SelectedBluRay.Titre</h1>
     </div>
     <body>
-        <font color="grey">@Model.SelectedBluRay.Duree / @string.Join(", ", Model.SelectedBluRay.Langues)</font>
+        <font color="grey">@Model.SelectedBluRay.Duree / TODO</font>
     </body>
     <div>
-        <font color="grey">Avec : @string.Join(", ", Model.SelectedBluRay.Acteurs.Select(x => string.Concat(x.Prenom, " ", x.Nom)))</font>
+        <font color="grey"> Avec : Des gens </font>
     </div>
     <div>
         Date de sortie : @Model.SelectedBluRay.DateSortie.ToShortDateString()
     </div>
+
+    @if (!@Model.SelectedBluRay.Emprunt) {
+            <button onclick="emprunter()">Emprunter</button>
+        
+    } else {
+        <button onclick="rendre()">Rendre</button>    
+    }
     
+    <p id="messageEmprunt"></p>
+
+    <script>
+    function emprunter() {
+      document.getElementById("messageEmprunt").innerHTML = "Vous avez emprunté ce BluRay, nous vous souhaitons bon visionnage !";
+    }
+
+    function rendre() {
+      document.getElementById("messageEmprunt").innerHTML = "Vous avez rendu ce BluRay, nous espérons qu'il vous a plu !";
+    }
+    </script>
 
 </div> 
 }
