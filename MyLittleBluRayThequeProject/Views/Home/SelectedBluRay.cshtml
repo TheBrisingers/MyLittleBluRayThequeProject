@@ -14,16 +14,13 @@
         <h1>@Model.SelectedBluRay.Titre</h1>
     </div>
     <body >
-          <font color = "grey">@Model.SelectedBluRay.Duree / @string.Join(", ", Model.SelectedBluRay.Genre)</font>
+          <font color = "grey">@Model.SelectedBluRay.Duree </font>
     </body>
     <div>
         <font color = "grey">Avec : @string.Join(", ", Model.SelectedBluRay.Acteurs.Select(x => string.Concat(x.Prenom, " ", x.Nom)))</font>
     </div>
     <div>
         Date de sortie : @Model.SelectedBluRay.DateSortie.ToShortDateString()
-    </div>
-    <div class="w3-panel w3-sand">
-        <p>@Model.SelectedBluRay.Resume</p>
     </div>
 
 </div> 

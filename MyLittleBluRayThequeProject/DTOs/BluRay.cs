@@ -43,33 +43,18 @@
         /// <summary>
         /// Langues disponibles sur le BR
         /// </summary>
-        public List<string> Langues { get; set; }
+        public List<RefLangue> Langues { get; set; }
 
         /// <summary>
         /// Sous-titres disponible sur le BR
         /// </summary>
-        public List<string> SsTitres { get; set; }
+        public List<RefLangue> SsTitres { get; set; }
 
         /// <summary>
         /// Version du film sur le BR
         /// </summary>
         public string Version { get; set; }
         
-        /// <summary>
-        /// Genre associé au BR
-        /// </summary>
-        public string Genre { get; set; }
-    
-        /// <summary>
-        /// Résumé du BR
-        /// </summary>
-        public string Resume { get; set; }
-
-        /// <summary>
-        /// Note du BR
-        /// </summary>
-        public int Note { get; set; }
-
         /// <summary>
         /// BR emprunté ou non
         /// </summary>
