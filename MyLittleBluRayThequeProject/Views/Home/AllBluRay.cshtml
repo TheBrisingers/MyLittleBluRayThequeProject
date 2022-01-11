@@ -14,7 +14,7 @@
 {
 <div>
     <a asp-area="" asp-controller="Home" asp-action="AllBluRay" asp-route-id="@br.Id">
-        @br.Titre (@br.DateSortie.ToShortDateString())
+        @br.Titre (@br.DateSortie.ToShortDateString()) : Disponible
     </a>
 </div>
 }
@@ -45,11 +45,11 @@
 
     <script>
     function emprunter() {
-      document.getElementById("messageEmprunt").innerHTML = "Vous avez emprunté ce BluRay, nous vous souhaitons bon visionnage !";
+        document.getElementById("messageEmprunt").innerHTML = "Vous avez emprunté ce BluRay, nous vous souhaitons un bon visionnage !";
     }
 
     function rendre() {
-      document.getElementById("messageEmprunt").innerHTML = "Vous avez rendu ce BluRay, nous espérons qu'il vous a plu !";
+        document.getElementById("messageEmprunt").innerHTML = "Vous avez rendu ce BluRay, nous espérons qu'il vous a plu !";
     }
     </script>
 

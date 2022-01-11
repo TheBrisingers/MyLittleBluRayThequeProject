@@ -58,7 +58,56 @@ namespace MyLittleBluRayThequeProject.Business
             personneRepository.LinkActeur(bluRay.Acteurs, idBluRay);
             langueRepository.LinkLangue(bluRay.Langues, idBluRay);
             langueRepository.LinkSsTitres(bluRay.Langues, idBluRay);
+        }
+        public void BorrowBluRay(long idBluRay)
+        {
+            List<BluRay> bluRays = bluRayRepository.GetListeBluRay();
+            bluRays = bluRays.OrderByDescending(b => b.Id).ToList();
 
+            if (idBluRay < 0)
+            {
+                // missing ressource
+                throw new Exception();
+            }
+
+            foreach (var aBluRay in bluRays)
+            {
+                if (string.Equals(aBluRay.Id, idBluRay))
+                {
+                    if (aBluRay.Disponible)
+                    {
+                        // not available anymore
+                        aBluRay.Disponible = false;
+                    }
+                    else throw new Exception(); // already borrowed
+                }
+                break;
+            }
+        }
+        public void ReturnBluRay(long idBluRay)
+        {
+            List<BluRay> bluRays = bluRayRepository.GetListeBluRay();
+            bluRays = bluRays.OrderByDescending(b => b.Id).ToList();
+
+            if (idBluRay < 0)
+            {
+                // missing ressource
+                throw new Exception();
+            }
+
+            foreach (var aBluRay in bluRays)
+            {
+                if (string.Equals(aBluRay.Id, idBluRay))
+                {
+                    if (!aBluRay.Disponible)
+                    {
+                        // not available anymore
+                        aBluRay.Disponible = true;
+                    }
+                    else throw new Exception(); // already borrowed
+                }
+                break;
+            }
         }
     }
 }
