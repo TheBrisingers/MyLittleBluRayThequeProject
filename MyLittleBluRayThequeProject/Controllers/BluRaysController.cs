@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using MyLittleBluRayThequeProject.Business;
 using MyLittleBluRayThequeProject.DTOs;
 using MyLittleBluRayThequeProject.Models;
 using MyLittleBluRayThequeProject.Repositories;
@@ -12,6 +13,7 @@ namespace MyLittleBluRayThequeProject.Controllers
         private readonly ILogger<BluRaysController> _logger;
 
         private readonly BluRayRepository brRepository;
+        private readonly BluRayBusiness brBusiness;
 
         public BluRaysController(ILogger<BluRaysController> logger)
         {
@@ -28,9 +30,40 @@ namespace MyLittleBluRayThequeProject.Controllers
         }
 
         [HttpPost("{IdBluray}/Emprunt")]
-        public ObjectResult EmprunterBluRay([FromRoute] IdBluRayRoute route)
+        public ObjectResult BorrowBluRay([FromRoute] IdBluRayRoute route)
         {
+            try
+            {
+                if (brRepository.GetBluRay(route.IdBluray) != null)
+                {
+                    if (brRepository.GetBluRay(route.IdBluray).Disponible)
+                    {
+                        brBusiness.BorrowBluRay(route.IdBluray);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception();
+            }
+            return new CreatedResult($"{route.IdBluray}", null);
+        }
 
+
+        [HttpDelete("{IdBluray}/Emprunt")]
+        public ObjectResult ReturnBluRay([FromRoute] IdBluRayRoute route)
+        {
+            try
+            {
+                if (brRepository.GetBluRay(route.IdBluray) != null)
+                {
+                        brBusiness.ReturnBluRay(route.IdBluray);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception();
+            }
             return new CreatedResult($"{route.IdBluray}", null);
         }
     }
