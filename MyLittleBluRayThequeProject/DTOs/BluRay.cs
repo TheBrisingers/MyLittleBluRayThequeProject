@@ -61,6 +61,10 @@
         public bool Emprunt { get; set; }
 
         /// <summary>
+        /// Id du propriétaire
+        /// </summary>
+        public int Proprietaire { get; set; }
+        /// <summary>
         /// Disponibilité du BR
         /// </summary>
         public bool Disponible { get; set; }

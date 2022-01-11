@@ -113,14 +113,15 @@ namespace MyLittleBluRayThequeProject.Repositories
 
                 // Define a query returning a single row result set
                 NpgsqlCommand command = new NpgsqlCommand("INSERT INTO \"BluRayTheque\".\"BluRay\"(\"Titre\", \"Duree\", \"DateSortie\"," +
-                    "\"Version\", \"Emprunt\", \"Disponible\") " +
-                    "VALUES (@titre, @duree, @dateSortie, @version, @emprunt, @disponible);", conn);
+                    "\"Version\", \"Emprunt\", \"Disponible\", \"Proprietaire\" ) " +
+                    "VALUES (@titre, @duree, @dateSortie, @version, @emprunt, @disponible, @proprietaire);", conn);
                 command.Parameters.AddWithValue("titre", bluRay.Titre);
                 command.Parameters.AddWithValue("duree", bluRay.Duree.TotalSeconds);
                 command.Parameters.AddWithValue("dateSortie", bluRay.DateSortie);
                 command.Parameters.AddWithValue("version", bluRay.Version);
                 command.Parameters.AddWithValue("emprunt", bluRay.Emprunt);
                 command.Parameters.AddWithValue("disponible", bluRay.Disponible);
+                command.Parameters.AddWithValue("proprietaire", bluRay.Proprietaire);
 
                 // Execute the query and obtain a result set
                 NpgsqlDataReader dr = command.ExecuteReader();

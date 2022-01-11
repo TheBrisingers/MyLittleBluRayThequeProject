@@ -1,0 +1,20 @@
+﻿@model IndexViewModel
+
+@{
+    ViewData["Title"] = "Emprunt BluRay";
+}
+<h1>@ViewData["Title"]</h1>
+
+<div>
+    <h1>Voici les Blu-rays pouvant être emprunté :</h1>
+</div>
+
+@foreach (var br in Model?.LoueurBluRays)
+{
+<div>
+    @br.Titre @br.Version 
+    <a asp-area="" asp-controller="Emprunt" asp-action="DoEmprunt" asp-route-id="@br.Id">
+        EMPRUNTER
+    </a>
+</div>
+}

@@ -11,5 +11,11 @@ namespace MyLittleBluRayThequeProject.Models
         public List<Personne> Personnes { get; set; }
 
         public List<RefLangue> Langues { get; set; }
+
+        public List<BluRayApi> LoueurBluRays { get; set; }
+        public BluRayApi SelectedLoueurBluRays { get; set; }
+        public List<Loueur> Loueurs { get; set; }
+        public Loueur SelectedLoueur { get; set; }
+
     }
 }

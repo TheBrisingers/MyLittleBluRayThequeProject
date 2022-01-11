@@ -1,0 +1,23 @@
+﻿@model IndexViewModel
+
+@{
+    ViewData["Title"] = "Emprunt BluRay";
+}
+<h1>@ViewData["Title"]</h1>
+
+<div>
+<form asp-controller="Emprunt" asp-action="EmpruntAllBluRay" method="post">
+    <div>
+        <label for="loueur">Choisir  :</label>
+        <select name="IdLoueur" id="loueur" required>
+            @foreach(var loueur in Model?.Loueurs)
+            {
+                <option value="@loueur.Id">@loueur.Nom </option>                    
+            }
+        </select>
+    </div>
+    <div>
+        <input type="submit" value="Voir ses BluRays !"
+    </div>
+</form>
+</div>
