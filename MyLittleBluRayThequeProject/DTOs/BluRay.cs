@@ -42,7 +42,7 @@
 
         /// <summary>
         /// Langues disponibles sur le BR
-        /// </summary>
+        /// </summary>  
         public List<RefLangue> Langues { get; set; }
 
         /// <summary>
