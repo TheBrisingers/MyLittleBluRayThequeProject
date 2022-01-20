@@ -101,7 +101,6 @@ namespace MyLittleBluRayThequeProject.Business
                 {
                     if (!aBluRay.Disponible)
                     {
-                        // not available anymore
                         aBluRay.Disponible = true;
                     }
                     else throw new Exception(); // already borrowed
