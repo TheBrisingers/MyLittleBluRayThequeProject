@@ -45,7 +45,7 @@ namespace MyLittleBluRayThequeProject.Controllers
             return View(model);
         }
 
-        public IActionResult DoEmprunt(long? id, EmpruntBluRayBodyViewModel empruntBluRayBody)
+        public IActionResult DoEmprunt(EmpruntBluRayBodyViewModel empruntBluRayBody)
         {
             IndexViewModel model = new IndexViewModel();
             brApiRepository.PostEmprunt(brApiRepository.GetLoueur(empruntBluRayBody.IdLoueur).BaseUrl, empruntBluRayBody.idBluRay);

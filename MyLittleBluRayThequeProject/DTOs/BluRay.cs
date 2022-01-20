@@ -63,7 +63,7 @@
         /// <summary>
         /// Id du propriétaire
         /// </summary>
-        public int Proprietaire { get; set; }
+        public long Proprietaire { get; set; }
         /// <summary>
         /// Disponibilité du BR
         /// </summary>

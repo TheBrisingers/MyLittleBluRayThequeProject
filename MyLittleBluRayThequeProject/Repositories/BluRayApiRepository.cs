@@ -24,7 +24,7 @@ namespace MyLittleBluRayThequeProject.Repositories
             return result;
         }
 
-        public bool PostEmprunt(string baseUrl, int idBluRay)
+        public bool PostEmprunt(string baseUrl, long idBluRay)
         {
             HttpClient client = new HttpClient();
             List<BluRayApi> result = new List<BluRayApi>();
@@ -39,7 +39,7 @@ namespace MyLittleBluRayThequeProject.Repositories
             }
             return true;
         }
-        public Loueur GetLoueur(int idLoueur)
+        public Loueur GetLoueur(long idLoueur)
         {
             NpgsqlConnection conn = null;
             List<Loueur> result = new List<Loueur>();

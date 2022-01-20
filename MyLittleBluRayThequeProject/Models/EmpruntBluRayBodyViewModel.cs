@@ -2,9 +2,9 @@
 {
     public class EmpruntBluRayBodyViewModel
     {
-        public int IdLoueur { get; set; }
+        public long IdLoueur { get; set; }
 
-        public int idBluRay { get; set; }
+        public long idBluRay { get; set; }
 
         public string titre { get; set; }
 
