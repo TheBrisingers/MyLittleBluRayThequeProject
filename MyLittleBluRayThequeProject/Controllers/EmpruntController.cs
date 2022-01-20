@@ -48,6 +48,44 @@ namespace MyLittleBluRayThequeProject.Controllers
             return View(model);
         }
 
+        [HttpPost("/BluRays/{IdBluray}/Emprunt")]
+        public ObjectResult BorrowBluRay([FromRoute] IdBluRayRoute route)
+        {
+            try
+            {
+                if (brRepository.GetBluRay(route.IdBluray) != null)
+                {
+                    if (brRepository.GetBluRay(route.IdBluray).Disponible)
+                    {
+                        bluRayBusiness.BorrowBluRay(route.IdBluray);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception();
+            }
+            return new CreatedResult($"{route.IdBluray}", null);
+        }
+
+
+        [HttpDelete("/BluRays/{IdBluray}/Emprunt")]
+        public ObjectResult ReturnBluRay([FromRoute] IdBluRayRoute route)
+        {
+            try
+            {
+                if (brRepository.GetBluRay(route.IdBluray) != null)
+                {
+                    bluRayBusiness.ReturnBluRay(route.IdBluray);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception();
+            }
+            return new CreatedResult($"{route.IdBluray}", null);
+        }
+
         public IActionResult DoEmprunt(long id, string titre, string version, long idLoueur)
         {
             IndexViewModel model = new IndexViewModel();

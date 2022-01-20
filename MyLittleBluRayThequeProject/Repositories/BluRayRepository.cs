@@ -135,7 +135,36 @@ namespace MyLittleBluRayThequeProject.Repositories
                     conn.Close();
                 }
             }
-        }        
+        }  
+        
+        public void EditDisponibility(BluRay bluRay)
+        {
+            NpgsqlConnection conn = null;
+            try
+            {
+                // Connect to a PostgreSQL database
+                conn = new NpgsqlConnection("Server=127.0.0.1;User Id=postgres;Password=matim;Database=postgres;");
+                conn.Open();
+
+                // Define a query returning a single row result set
+                NpgsqlCommand command = new NpgsqlCommand("UPDATE \"BluRayTheque\".\"BluRay\" SET \"Disponible\"= @dispo " +
+                    "WHERE \"Id\" == @id;", conn);
+                command.Parameters.AddWithValue("dispo", bluRay.Disponible);
+                command.Parameters.AddWithValue("id", bluRay.Id);
+
+                // Execute the query and obtain a result set
+                NpgsqlDataReader dr = command.ExecuteReader();
+
+
+            }
+            finally
+            {
+                if (conn != null)
+                {
+                    conn.Close();
+                }
+            }
+        }
     }
 }
     

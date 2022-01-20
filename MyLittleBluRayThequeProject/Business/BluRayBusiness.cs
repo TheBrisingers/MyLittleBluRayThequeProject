@@ -78,6 +78,7 @@ namespace MyLittleBluRayThequeProject.Business
                     {
                         // not available anymore
                         aBluRay.Disponible = false;
+                        bluRayRepository.EditDisponibility(aBluRay);
                     }
                     else throw new Exception(); // already borrowed
                 }
@@ -102,6 +103,7 @@ namespace MyLittleBluRayThequeProject.Business
                     if (!aBluRay.Disponible)
                     {
                         aBluRay.Disponible = true;
+                        bluRayRepository.EditDisponibility(aBluRay);
                     }
                     else throw new Exception(); // already borrowed
                 }
