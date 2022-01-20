@@ -56,7 +56,7 @@
         </div>
         <div>
             <label for="ssTitres">Langue sous-titre disponible :</label>
-            <select name="IdSsTitres" id="ssTitres" required multiple>            
+            <select name="IdSsTitres" id="ssTitres" multiple>            
                 @foreach(var langue in Model?.Langues)
                 {
                     <option value=@langue.Id>@langue.Langue</option>                    

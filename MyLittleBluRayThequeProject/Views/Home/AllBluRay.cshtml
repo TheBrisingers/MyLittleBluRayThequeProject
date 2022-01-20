@@ -24,9 +24,6 @@
     <div>
         <h1>@Model.SelectedBluRay.Titre</h1>
     </div>
-    <body>
-        <font color="grey">@Model.SelectedBluRay.Duree</font>
-    </body>
     <div>
         <font color="grey"> Avec : Des gens </font>
     </div>
@@ -34,19 +31,13 @@
         Date de sortie : @Model.SelectedBluRay.DateSortie.ToShortDateString()
     </div>
 
-    @if (!@Model.SelectedBluRay.Emprunt) {
-            <button onclick="emprunter()">Emprunter</button>
-        
-    } else {
+    @if (@Model.SelectedBluRay.Emprunt) {
         <button onclick="rendre()">Rendre</button>    
     }
     
     <p id="messageEmprunt"></p>
 
     <script>
-    function emprunter() {
-        document.getElementById("messageEmprunt").innerHTML = "Vous avez emprunté ce BluRay, nous vous souhaitons un bon visionnage !";
-    }
 
     function rendre() {
         document.getElementById("messageEmprunt").innerHTML = "Vous avez rendu ce BluRay, nous espérons qu'il vous a plu !";

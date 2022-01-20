@@ -13,12 +13,14 @@ namespace MyLittleBluRayThequeProject.Controllers
         private readonly ILogger<EmpruntController> _logger;
 
         private readonly BluRayApiRepository brApiRepository;
+        private readonly BluRayRepository brRepository;
         private readonly BluRayBusiness bluRayBusiness;
 
         public EmpruntController(ILogger<EmpruntController> logger)
         {
             _logger = logger;
             brApiRepository = new BluRayApiRepository();
+            brRepository = new BluRayRepository();
             bluRayBusiness = new BluRayBusiness();
         }
 
@@ -30,6 +32,7 @@ namespace MyLittleBluRayThequeProject.Controllers
             if (empruntBodyViewModel.IdLoueur != null)
             {
                 model.SelectedLoueurBluRays = model.LoueurBluRays.FirstOrDefault(x => x.Id == empruntBodyViewModel.IdLoueur);
+                model.SelectedLoueur = new Loueur() { Id = empruntBodyViewModel.IdLoueur };
             }
             return View(model);
         }
@@ -45,19 +48,19 @@ namespace MyLittleBluRayThequeProject.Controllers
             return View(model);
         }
 
-        public IActionResult DoEmprunt(EmpruntBluRayBodyViewModel empruntBluRayBody)
+        public IActionResult DoEmprunt(long id, string titre, string version, long idLoueur)
         {
             IndexViewModel model = new IndexViewModel();
-            brApiRepository.PostEmprunt(brApiRepository.GetLoueur(empruntBluRayBody.IdLoueur).BaseUrl, empruntBluRayBody.idBluRay);
+            brApiRepository.PostEmprunt(brApiRepository.GetLoueur(idLoueur).BaseUrl, id);
             BluRay empruntedBluRay = new BluRay();
-            empruntedBluRay.Titre = empruntBluRayBody.titre;
-            empruntedBluRay.Version = empruntBluRayBody.version;
-            empruntedBluRay.DateSortie = empruntBluRayBody.DateSortie;
+            empruntedBluRay.Titre = titre;
+            empruntedBluRay.Version = version;
             empruntedBluRay.Emprunt = true;
-            empruntedBluRay.Proprietaire = empruntBluRayBody.IdLoueur;
+            empruntedBluRay.Proprietaire = idLoueur;
+            empruntedBluRay.Disponible = true;
             bluRayBusiness.AddBluRay(empruntedBluRay);
-
-            return View("AllBluRay", model);
+            model.BluRays = brRepository.GetListeBluRay();
+            return View("~/Views/Home/AllBluRay.cshtml", model);
         }
     }
 }

@@ -12,8 +12,15 @@
 @foreach (var br in Model?.LoueurBluRays)
 {
 <div>
-    @br.Titre @br.Version 
-    <a asp-area="" asp-controller="Emprunt" asp-action="DoEmprunt" asp-route-id="@br.Id">
+    @br.Titre @br.Version
+        @{
+            var empruntBluRayBody = new EmpruntBluRayBodyViewModel();
+            empruntBluRayBody.titre = br.Titre;
+            empruntBluRayBody.version = br.Version;
+            empruntBluRayBody.idBluRay = br.Id;
+        }
+    <a asp-area="" asp-controller="Emprunt" asp-action="DoEmprunt" asp-route-id="@br.Id" asp-route-titre="@br.Titre" asp-route-version="@br.Version"
+    asp-route-idLoueur="@Model?.SelectedLoueur.Id">
         EMPRUNTER
     </a>
 </div>

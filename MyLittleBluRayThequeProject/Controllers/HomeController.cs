@@ -62,10 +62,6 @@ namespace MyLittleBluRayThequeProject.Controllers
             return View("AllBluRay", model);
         }
 
-        public IActionResult Privacy()
-        {
-            return View();
-        }
 
         public IActionResult InsertPersonne()
         {
